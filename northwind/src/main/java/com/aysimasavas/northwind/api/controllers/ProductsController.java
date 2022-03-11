@@ -14,6 +14,7 @@ import com.aysimasavas.northwind.business.abstracts.ProductService;
 import com.aysimasavas.northwind.core.utilities.results.DataResult;
 import com.aysimasavas.northwind.core.utilities.results.Result;
 import com.aysimasavas.northwind.entities.concretes.Product;
+import com.aysimasavas.northwind.entities.dto.ProductWithCategoryDto;
 
 
 @RestController
@@ -21,6 +22,7 @@ import com.aysimasavas.northwind.entities.concretes.Product;
 public class ProductsController {
 
 	private ProductService productService;
+
 
 	@Autowired
 	public ProductsController(ProductService productService) {
@@ -69,6 +71,11 @@ public class ProductsController {
 	public DataResult<List<Product>> getByProductNameStartsWith(@RequestParam String productName) {
 		return this.productService.getByProductNameStartsWith(productName);
 
+	}
+
+	@GetMapping("/getProductWithCategoryDetails")
+	public DataResult<List<ProductWithCategoryDto>> getproductWithCategoryDetails() {
+		return this.productService.getProductWithCategoryDetails();
 	}
 
 }

@@ -14,6 +14,7 @@ import com.aysimasavas.northwind.core.utilities.results.Result;
 import com.aysimasavas.northwind.core.utilities.results.SuccesDataResult;
 import com.aysimasavas.northwind.dataAccess.abstracts.ProductDao;
 import com.aysimasavas.northwind.entities.concretes.Product;
+import com.aysimasavas.northwind.entities.dto.ProductWithCategoryDto;
 
 @Service
 public class ProductManager implements ProductService {
@@ -99,5 +100,11 @@ public class ProductManager implements ProductService {
 
 	}
 
+	@Override
+	public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails() {
+		return new SuccesDataResult<List<ProductWithCategoryDto>>(this.productDao.getProductWithCategoryDetails(),
+				"data listelendi");
+
+	}
 
 }
